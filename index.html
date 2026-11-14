@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3b1937">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="A birthday surprise, made with love.">
+  <title>For Karnee ♡ | A Little Forever</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+  <script src="config.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div id="hearts" aria-hidden="true"></div>
+
+  <main id="loading" class="gate"><div class="gate-inner"><div class="gate-icon">♡</div><h1>Something beautiful is coming…</h1><p>Preparing your little surprise.</p></div></main>
+
+  <section id="locked" class="gate" hidden>
+    <div class="gate-inner locked-inner">
+      <p class="eyebrow light">A LITTLE SURPRISE IS ON ITS WAY</p>
+      <div class="gate-icon">♡</div>
+      <h1>Some stories are<br><em>worth waiting for.</em></h1>
+      <p>This gift opens on <b id="lockDate">19 November · 12:00 AM IST</b>.</p>
+      <div class="countdown" id="countdown"><div><strong id="days">00</strong><span>DAYS</span></div><div><strong id="hours">00</strong><span>HOURS</span></div><div><strong id="minutes">00</strong><span>MINS</span></div><div><strong id="seconds">00</strong><span>SECS</span></div></div>
+      <p class="gate-foot">A tiny secret. A thousand beautiful feelings. ♡</p>
+      <button type="button" id="retry" class="btn btn-cream">Check for my surprise ↗</button>
+    </div>
+  </section>
+
+  <section id="errorScreen" class="gate" hidden><div class="gate-inner"><div class="gate-icon">✧</div><h1>We couldn't open this gift.</h1><p id="errorText">Please try again.</p><button class="btn btn-cream" id="retryError">Try again</button></div></section>
+
+  <section id="invitation" class="invitation" hidden>
+    <div class="invitation-photo" id="invitationPhoto"></div><div class="invitation-overlay"></div>
+    <div class="invitation-card">
+      <span class="eyebrow light" id="inviteDate">19 NOVEMBER · WITH LOVE</span>
+      <span class="invitation-seal">K <i>♡</i> N</span>
+      <h1>Hey, <em id="inviteNickname">Karnee</em> ♡</h1>
+      <p>A little surprise, a handful of memories, and all the words I wish I could wrap in a gift.</p>
+      <button type="button" class="btn btn-cream" id="openSurprise">Open your surprise <span>↗</span></button>
+      <span class="hand invite-sign">From Karna, with love.</span>
+    </div>
+    <div id="previewBadge" class="preview-badge" hidden>CLIENT REVIEW · DRAFT PREVIEW</div>
+  </section>
+
+  <div id="site" hidden>
+    <div class="music-dock"><button type="button" id="musicButton" aria-pressed="false">♫ <span id="musicLabel">Music off</span></button></div>
+    <audio id="music" loop preload="none"></audio>
+    <nav class="navbar"><span class="brand">K <i>♡</i> N</span><span>our beautiful little story</span><a href="#memories">OUR MEMORIES ↗</a></nav>
+
+    <header class="hero section" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">A SPECIAL DAY · 19 NOVEMBER</p>
+        <p class="hand">to my favourite human…</p>
+        <h1>Happy<br><em>Birthday,</em><br><span class="nick">Karnee</span><small>♡</small></h1>
+        <p id="heroText"></p><a class="btn btn-wine" href="#our-story">Let's revisit our story <span>↗</span></a>
+      </div>
+      <div class="hero-photo"><img id="heroImage" alt="Our birthday celebration photo"><span class="photo-note">you make every day feel special ♡</span></div>
+      <span class="section-corner">ANOTHER YEAR, ANOTHER BEAUTIFUL CHAPTER</span>
+    </header>
+
+    <section class="section our-story" id="our-story"><div class="container story-grid">
+      <div class="feature-photo"><img id="storyImage" alt="A beautiful memory together" loading="lazy"><span class="photo-polaroid">where it all began…</span></div>
+      <div class="story-copy"><p class="eyebrow">CHAPTER 01 · THE BEGINNING</p><span class="hand">some meetings change everything</span>
+        <h2>September <em>2023.</em><br>Our first hello.</h2><div class="rule"></div><p id="storyText"></p><div class="signature">Every beginning has a little magic. ♡</div>
+      </div></div></section>
+
+    <section class="section birthday" id="birthday"><div class="container birthday-grid">
+      <div class="birthday-copy"><p class="eyebrow">THIS DAY BELONGS TO YOU</p><div class="birthday-icon">✦</div><h2>Make a wish,<br><em>my Karnee.</em></h2><p id="birthdayText"></p>
+      <button class="btn btn-outline" id="wishButton" type="button">Make a birthday wish <span>♡</span></button><p id="wishResult" class="hand"></p></div>
+      <div class="feature-photo birthday-image"><img id="birthdayImage" alt="Birthday girl with a cake" loading="lazy"></div>
+    </div></section>
+
+    <section class="section memories" id="memories"><div class="container"><p class="eyebrow center">A COLLECTION OF OUR LITTLE MOMENTS</p><h2 class="center">The moments that made <em>us.</em></h2><p class="center memories-sub">Every picture tells a little story. Tap a photo to look closer.</p><div class="gallery" id="gallery"></div><p class="hand gallery-end">and a lifetime of memories still waiting for us ♡</p></div></section>
+
+    <section class="section forever" id="forever"><div class="container forever-grid"><div class="forever-copy"><p class="eyebrow">CHAPTER 02 · THE ROAD AHEAD</p><span class="hand">some of the best things are still ahead</span><h2>From this birthday<br>to <em>our forever.</em></h2><div class="rule"></div><p id="foreverText"></p><span class="hand">no wedding date needed for a promise this beautiful ♡</span></div><div class="feature-photo"><img id="foreverImage" alt="Two people sharing a memory" loading="lazy"></div></div></section>
+
+    <section class="section games" id="games"><div class="container"><p class="eyebrow center">THREE LITTLE SURPRISES</p><h2 class="center">Unlock a <em>secret letter.</em></h2><p class="center game-sub">Three small puzzles. A big moment waiting at the end. ✨</p>
+      <div class="puzzle" id="game1"><span class="puzzle-step">01 / 03</span><h3>Which month did our story begin?</h3><p class="puzzle-hint">Choose the correct month from the zigzag path.</p><div class="month-zigzag" id="monthOptions"></div><div class="puzzle-result" id="monthResult" aria-live="polite"></div><button id="toGame2" class="btn btn-wine next" type="button" hidden>Next surprise ↗</button></div>
+      <div class="puzzle" id="game2" hidden><span class="puzzle-step">02 / 03</span><h3>Which name is closest to his heart?</h3><p class="puzzle-hint">Three envelopes. All are closed. Tap one to reveal what's inside.</p><div class="envelopes" id="envelopes"></div><div class="puzzle-result" id="nameResult" aria-live="polite"></div><button id="toGame3" class="btn btn-wine next" type="button" hidden>One last surprise ↗</button></div>
+      <div class="puzzle" id="game3" hidden><span class="puzzle-step">03 / 03</span><h3>Choose her special birthday date.</h3><p class="puzzle-hint">Pick the correct envelope from the hanging date cards.</p><div class="date-ribbon" id="dateRibbon"></div><div class="puzzle-result" id="dateResult" aria-live="polite"></div></div>
+    </div></section>
+
+    <section class="section final" id="final" hidden><div class="container final-inner"><p class="eyebrow center">THE FINAL CHAPTER OF THIS SURPRISE</p><div class="final-envelope"><span class="hand">One last note, just for you.</span><h2>Always <em>you, Karnee.</em></h2><p id="finalText"></p><p class="final-sign">With all my love,<br><strong id="signName">Karna</strong> ♡</p></div><div class="final-image-wrap"><img id="finalImage" alt="Our beautiful final memory"><div class="final-photo-caption">Here's to every tomorrow, together. ♡</div></div></div></section>
+    <footer class="footer"><strong>K ♡ N</strong><span>A special birthday, a beautiful story.</span><a href="#home">BACK TO TOP ↑</a></footer>
+  </div>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo preview" hidden><button type="button" id="closeLightbox" aria-label="Close photo">×</button><div><img id="lightboxImage" alt=""><p id="lightboxCaption"></p></div></div>
+</body>
+</html>
